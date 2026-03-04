@@ -1,0 +1,86 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+skinparam linetype ortho
+skinparam shadowing false
+
+actor Guest as "Гость"
+actor RegisteredUser as "Зарегистрированный\nпользователь"
+actor Editor as "Редактор контента"
+actor Admin as "Администратор системы"
+
+RegisteredUser --|> Guest
+Editor --|> RegisteredUser
+Admin --|> Editor
+
+rectangle "Информационный портал" as System {
+  package "Публичные разделы" {
+    usecase "UC1\nПросмотр календаря и даты" as UC1
+    usecase "UC2\nПросмотр праздников и именин" as UC2
+    usecase "UC3\nПросмотр гороскопов" as UC3
+    usecase "UC4\nПросмотр исторических событий" as UC4
+    usecase "UC5\nПоиск контента" as UC5
+    usecase "UC6\nПросмотр новостей и анонсов" as UC6
+  }
+
+  package "Личный кабинет" {
+    usecase "UC8\nДобавление в избранное" as UC8
+    usecase "UC9\nПерсональные закладки" as UC9
+    usecase "UC10\nНастройка персонального гороскопа" as UC10
+    usecase "UC11\nEmail-уведомления" as UC11
+    usecase "UC12\nИстория поиска" as UC12
+  }
+
+  package "Редактура" {
+    usecase "UC13\nУправление контентом" as UC13
+    usecase "UC13.1\nДобавление материала" as UC131
+    usecase "UC13.2\nРедактирование материала" as UC132
+    usecase "UC13.3\nУдаление материала" as UC133
+    usecase "UC14\nЗагрузка медиаконтента" as UC14
+    usecase "UC15\nМодерация материалов" as UC15
+    usecase "UC16\nСтатистика материалов" as UC16
+  }
+
+  package "Администрирование" {
+    usecase "UC17\nУправление пользователями" as UC17
+    usecase "UC17.1\nБлокировка аккаунтов" as UC171
+    usecase "UC17.2\nСброс паролей" as UC172
+    usecase "UC17.3\nИзменение ролей" as UC173
+    usecase "UC18\nНастройка системы и интеграций" as UC18
+    usecase "UC19\nМониторинг работоспособности" as UC19
+    usecase "UC20\nРезервное копирование\nи восстановление" as UC20
+    usecase "UC21\nАнализ посещаемости" as UC21
+  }
+}
+
+Guest --> UC1
+Guest --> UC2
+Guest --> UC3
+Guest --> UC4
+Guest --> UC5
+Guest --> UC6
+
+RegisteredUser --> UC8
+RegisteredUser --> UC9
+RegisteredUser --> UC10
+RegisteredUser --> UC11
+RegisteredUser --> UC12
+
+Editor --> UC13
+Editor --> UC14
+Editor --> UC15
+Editor --> UC16
+
+Admin --> UC17
+Admin --> UC18
+Admin --> UC19
+Admin --> UC20
+Admin --> UC21
+
+UC13 .> UC131 : <<include>>
+UC13 .> UC132 : <<include>>
+UC13 .> UC133 : <<include>>
+UC17 .> UC171 : <<include>>
+UC17 .> UC172 : <<include>>
+UC17 .> UC173 : <<include>>
+@enduml

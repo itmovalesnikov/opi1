@@ -1,0 +1,20 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+skinparam linetype ortho
+skinparam shadowing false
+
+actor Editor as "Редактор контента"
+
+rectangle "Информационный портал" as System {
+  usecase "UC14\nЗагрузка\nмедиаконтента" as UC14
+  usecase "Выбрать файл" as UC14A
+  usecase "Проверить формат\nи размер" as UC14B
+  usecase "Привязать файл\nк материалу" as UC14C
+}
+
+Editor --> UC14
+UC14 .> UC14A : <<include>>
+UC14 .> UC14B : <<include>>
+UC14 .> UC14C : <<include>>
+@enduml

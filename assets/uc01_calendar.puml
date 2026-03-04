@@ -1,0 +1,18 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+skinparam linetype ortho
+skinparam shadowing false
+
+actor Guest as "Гость"
+
+rectangle "Информационный портал" as System {
+  usecase "UC1\nПросмотр календаря" as UC1
+  usecase "Выбрать дату" as UC1A
+  usecase "Показать данные\nпо дате" as UC1B
+}
+
+Guest --> UC1
+UC1 .> UC1A : <<include>>
+UC1 .> UC1B : <<include>>
+@enduml

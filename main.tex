@@ -1,0 +1,55 @@
+% !TEX program = xelatex
+
+\documentclass[12pt]{article}
+\usepackage{pgfplots}
+\usepackage{fontspec}
+\usepackage{graphicx}
+\usepackage{polyglossia}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{calc}
+\usepackage{array}
+\usepackage{tikz}
+\usepackage{svg}
+
+\usepackage[
+    a4paper,
+    left=1.5cm,
+    right=1.5cm,
+    top=1.5cm,
+    bottom=2.5cm
+]{geometry}
+
+\usepackage{setspace}
+
+\setlength{\parskip}{0.2\baselineskip}
+\setlength{\parindent}{0cm}
+\setdefaultlanguage{english}
+\setotherlanguage{russian}
+
+\usetikzlibrary{intersections}
+
+\setmainfont[
+  UprightFont = cmunrm.otf,
+  ItalicFont = cmunit.otf,
+  BoldFont = cmunbx.otf,
+  BoldItalicFont = cmunbi.otf,
+  Ligatures = TeX
+]{cmunrm.otf}
+
+\begin{document}
+\include{title.tex}
+\tableofcontents
+\newpage
+\sloppy
+
+\include{srs.tex}
+\include{table.tex}
+\include{diagrams.tex}
+\include{use_cases.tex}
+\include{small_diagrams.tex}
+\include{conclusion.tex}
+
+\end{document}

@@ -1,0 +1,20 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+skinparam linetype ortho
+skinparam shadowing false
+
+actor Admin as "Администратор системы"
+
+rectangle "Информационный портал" as System {
+  usecase "UC17\nУправление\nпользователями" as UC17
+  usecase "Блокировка\nаккаунта" as UC17A
+  usecase "Сброс пароля" as UC17B
+  usecase "Изменение роли" as UC17C
+}
+
+Admin --> UC17
+UC17 .> UC17A : <<include>>
+UC17 .> UC17B : <<include>>
+UC17 .> UC17C : <<include>>
+@enduml

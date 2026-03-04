@@ -1,0 +1,18 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+skinparam linetype ortho
+skinparam shadowing false
+
+actor RegisteredUser as "Зарегистрированный\nпользователь"
+
+rectangle "Информационный портал" as System {
+  usecase "UC8\nДобавление в избранное" as UC8
+  usecase "Открыть материал" as UC8A
+  usecase "Сохранить в профиле" as UC8B
+}
+
+RegisteredUser --> UC8
+UC8 .> UC8A : <<include>>
+UC8 .> UC8B : <<include>>
+@enduml

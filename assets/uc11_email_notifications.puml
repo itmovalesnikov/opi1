@@ -1,0 +1,20 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+skinparam linetype ortho
+skinparam shadowing false
+
+actor RegisteredUser as "Зарегистрированный\nпользователь"
+
+rectangle "Информационный портал" as System {
+  usecase "UC11\nНастройка уведомлений\nпо email" as UC11
+  usecase "Выбрать тип\nуведомлений" as UC11A
+  usecase "Задать\nпериодичность" as UC11B
+  usecase "Сохранить параметры" as UC11C
+}
+
+RegisteredUser --> UC11
+UC11 .> UC11A : <<include>>
+UC11 .> UC11B : <<include>>
+UC11 .> UC11C : <<include>>
+@enduml
