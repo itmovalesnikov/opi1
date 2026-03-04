@@ -1,7 +1,7 @@
 @startuml
 left to right direction
 skinparam packageStyle rectangle
-skinparam linetype ortho
+skinparam linetype polyline
 skinparam shadowing false
 
 actor Guest as "Гость"
@@ -14,7 +14,7 @@ Editor --|> RegisteredUser
 Admin --|> Editor
 
 rectangle "Информационный портал" as System {
-  package "Публичные разделы" {
+  together {
     usecase "UC1\nПросмотр календаря и даты" as UC1
     usecase "UC2\nПросмотр праздников и именин" as UC2
     usecase "UC3\nПросмотр гороскопов" as UC3
@@ -23,7 +23,7 @@ rectangle "Информационный портал" as System {
     usecase "UC6\nПросмотр новостей и анонсов" as UC6
   }
 
-  package "Личный кабинет" {
+  together {
     usecase "UC8\nДобавление в избранное" as UC8
     usecase "UC9\nПерсональные закладки" as UC9
     usecase "UC10\nНастройка персонального гороскопа" as UC10
@@ -31,7 +31,7 @@ rectangle "Информационный портал" as System {
     usecase "UC12\nИстория поиска" as UC12
   }
 
-  package "Редактура" {
+  together {
     usecase "UC13\nУправление контентом" as UC13
     usecase "UC13.1\nДобавление материала" as UC131
     usecase "UC13.2\nРедактирование материала" as UC132
@@ -41,7 +41,7 @@ rectangle "Информационный портал" as System {
     usecase "UC16\nСтатистика материалов" as UC16
   }
 
-  package "Администрирование" {
+  together {
     usecase "UC17\nУправление пользователями" as UC17
     usecase "UC17.1\nБлокировка аккаунтов" as UC171
     usecase "UC17.2\nСброс паролей" as UC172
