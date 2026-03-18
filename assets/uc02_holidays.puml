@@ -8,11 +8,13 @@ actor Guest as "Гость"
 
 rectangle "Информационный портал" as System {
   usecase "UC2\nПросмотр праздников" as UC2
-  usecase "Показать список\nпраздников" as UC2A
-  usecase "Открыть карточку\nпраздника" as UC2B
+  usecase "Выбрать дату" as UC2A
+  usecase "Показать список\nпраздников" as UC2B
+  usecase "Открыть карточку\nпраздника" as UC2C
 }
 
 Guest --> UC2
 UC2 .> UC2A : <<include>>
-UC2 .> UC2B : <<include>>
+UC2A .> UC2B : <<include>>
+UC2 .> UC2C : <<include>>
 @enduml

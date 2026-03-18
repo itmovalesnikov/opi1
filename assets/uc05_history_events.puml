@@ -15,6 +15,6 @@ rectangle "Информационный портал" as System {
 
 Guest --> UC5
 UC5 .> UC5A : <<include>>
-UC5 .> UC5B : <<include>>
+UC5A .> UC5B : <<include>>
 UC5 .> UC5C : <<include>>
 @enduml
