@@ -1,0 +1,20 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+skinparam linetype ortho
+skinparam shadowing false
+
+actor Guest as "Гость"
+
+rectangle "Информационный портал" as System {
+  usecase "UC6\nПоиск контента" as UC6
+  usecase "Ввести запрос\nи фильтры" as UC6A
+  usecase "Выполнить поиск" as UC6B
+  usecase "Показать результаты\nпо типам контента" as UC6C
+}
+
+Guest --> UC6
+UC6 .> UC6A : <<include>>
+UC6 .> UC6B : <<include>>
+UC6 .> UC6C : <<include>>
+@enduml
