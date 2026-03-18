@@ -1,0 +1,20 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+skinparam linetype ortho
+skinparam shadowing false
+
+actor Guest as "Гость"
+
+rectangle "Информационный портал" as System {
+  usecase "UC5\nПросмотр\nисторических событий" as UC5
+  usecase "Выбрать дату" as UC5A
+  usecase "Показать список\nсобытий" as UC5B
+  usecase "Открыть детали\nсобытия" as UC5C
+}
+
+Guest --> UC5
+UC5 .> UC5A : <<include>>
+UC5 .> UC5B : <<include>>
+UC5 .> UC5C : <<include>>
+@enduml
