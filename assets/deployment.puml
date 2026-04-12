@@ -1,0 +1,53 @@
+@startuml
+left to right direction
+skinparam shadowing false
+skinparam packageStyle rectangle
+skinparam defaultTextAlignment center
+
+title Deployment Diagram - Portal "Kalendar.ru"
+
+node "User Device\n<<device>>" as Client {
+  artifact "Web/PWA Client\n(React)\n<<artifact>>" as WebClient
+}
+
+cloud "CDN\n<<external>>" as CDN
+
+node "Edge Node\n<<node>>" as Edge {
+  node "Nginx 1.20+\n<<executionEnvironment>>" as Nginx
+}
+
+node "Application Node\n<<node>>" as AppNode {
+  node "JVM 17+\n<<executionEnvironment>>" as JVM
+  artifact "Portal Backend\n(Spring Boot 3.x)\n<<artifact>>" as Backend
+}
+
+node "Data Node\n<<node>>" as DataNode {
+  database "PostgreSQL 14+\n<<database>>" as Pg
+  node "Redis 7+\n<<executionEnvironment>>" as Redis
+  node "Elasticsearch 8+\n<<executionEnvironment>>" as ES
+}
+
+node "Monitoring Node\n<<node>>" as MonNode {
+  node "Prometheus\n<<executionEnvironment>>" as Prom
+  node "Grafana\n<<executionEnvironment>>" as Grafana
+}
+
+node "SMTP Service\n<<external>>" as SMTP
+node "Backup Storage\n<<storage>>" as Backup
+
+WebClient -- CDN : HTTPS (static)
+WebClient -- Nginx : HTTPS/TLS 1.3 (JSON API)
+CDN -- Nginx : Origin fetch
+
+Nginx -- Backend : HTTP (internal)
+
+Backend -- Pg : SQL/TCP 5432
+Backend -- Redis : Cache/TCP 6379
+Backend -- ES : Search/TCP 9200
+Backend -- SMTP : SMTP/TLS
+
+Prom -- Backend : Metrics scrape
+Grafana -- Prom : Dashboards
+
+Pg -- Backup : Daily backup
+@enduml
